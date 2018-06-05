@@ -1,0 +1,21 @@
+{
+  "name": "richiehughes/nationalrailconnector",
+  "description": "A connector for the National Rail Push Port",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Richie Hughes",
+      "email": "eeuc40@hotmail.com"
+    }
+  ],
+  "require": {
+    "php": ">7.2",
+    "stomp-php/stomp-php": "^4.4",
+    "richardhughes/xmltojson": "^0.1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "NationalRail\\": "src/"
+    }
+  }
+}

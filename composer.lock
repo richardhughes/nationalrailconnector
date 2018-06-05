@@ -1,0 +1,114 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "5da6bd6bd56dd9678584fe5b309f0cf2",
+    "packages": [
+        {
+            "name": "richardhughes/xmltojson",
+            "version": "0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/richardhughes/xmltojson.git",
+                "reference": "3350e9e62a9b28225694b6dcce5dfadc2990c16e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/richardhughes/xmltojson/zipball/3350e9e62a9b28225694b6dcce5dfadc2990c16e",
+                "reference": "3350e9e62a9b28225694b6dcce5dfadc2990c16e",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Converter\\": "src/",
+                    "Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Richie Hughes",
+                    "email": "eeuc40@hotmail.com"
+                }
+            ],
+            "time": "2018-01-19T21:06:06+00:00"
+        },
+        {
+            "name": "stomp-php/stomp-php",
+            "version": "4.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stomp-php/stomp-php.git",
+                "reference": "7822745d0e938f46466e0da92d8e0450c74be4eb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stomp-php/stomp-php/zipball/7822745d0e938f46466e0da92d8e0450c74be4eb",
+                "reference": "7822745d0e938f46466e0da92d8e0450c74be4eb",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0"
+            },
+            "require-dev": {
+                "phpmd/phpmd": "^2.6",
+                "phpunit/phpunit": "^5.7",
+                "squizlabs/php_codesniffer": "^2.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Stomp\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Dejan Bosnanac",
+                    "email": "dejan@nighttale.net",
+                    "homepage": "http://www.nighttale.net"
+                },
+                {
+                    "name": "Sören Rohweder",
+                    "email": "s.rohweder@blage.net",
+                    "homepage": "http://www.monofone.de"
+                },
+                {
+                    "name": "Jens Radtke",
+                    "email": "swefl@fin-sn.de",
+                    "homepage": "http://www.fin-sn.de"
+                }
+            ],
+            "description": "stomp support for PHP",
+            "homepage": "http://github.com/stomp-php/stomp-php",
+            "keywords": [
+                "activeMQ",
+                "apollomq",
+                "jms",
+                "messaging",
+                "rabbitmq",
+                "stomp"
+            ],
+            "time": "2018-03-19T19:21:05+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">7.2"
+    },
+    "platform-dev": []
+}
