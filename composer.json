@@ -1,7 +1,8 @@
 {
-  "name": "richiehughes/nationalrailconnector",
+  "name": "richardhughes/nationalrailconnector",
   "description": "A connector for the National Rail Push Port",
-  "type": "project",
+  "type": "library",
+  "license": "MIT",
   "authors": [
     {
       "name": "Richie Hughes",
