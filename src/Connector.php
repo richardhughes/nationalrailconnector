@@ -1,67 +1,40 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: richie
+ * Date: 07/06/18
+ * Time: 18:05
+ */
 
 namespace NationalRail;
 
-use Converter\XML;
-use NationalRail\Exception\NotConnectedException;
+use NationalRail\Connection\Stomp as StompConnection;
+use NationalRail\Constants\Stomp;
 use Stomp\Client;
-use Stomp\Exception\StompException;
 use Stomp\StatefulStomp;
 
 class Connector
 {
-    private const DEFAULT_NATIONAL_RAIL_URI = 'tcp://datafeeds.nationalrail.co.uk';
+    private $connection;
 
-    private const STOMP_LISTENING_PORT = 61613;
-    /**
-     * @var Client
-     */
-    private $stompClient;
+    public function __construct(string $username, string $password, string $queue)
+    {
+        $stompClient = new Client(
+            Stomp::NATIONAL_RAIL_URI
+            . ':'
+            . Stomp::LISTENING_PORT
+        );
 
-    private $stomp;
+        $stomp = new StatefulStomp($stompClient);
 
-    public function __construct(
-        string $username,
-        string $password,
-        string $queue,
-        string $uri = self::DEFAULT_NATIONAL_RAIL_URI,
-        int $port = self::STOMP_LISTENING_PORT
-    ) {
-        $this->stompClient = new Client($uri . ':' . $port);
-        $this->stompClient->setLogin($username, $password);
-
-        $this->connect();
-
-        $this->stomp = new StatefulStomp($this->stompClient);
-        $this->stomp->subscribe('/queue/' . $queue);
+        $this->connection = new StompConnection($stompClient, $stomp);
+        $this->connection->login($username, $password);
+        $this->connection->connect();
+        $this->connection->subscribeTo($queue);
     }
 
-    public function getMessage(): ?array
+    public function getConnection(): StompConnection
     {
-        $message = $this->stomp->read();
-
-        if ($message) {
-            $unZip = gzdecode($message->body);
-            $loadedXml = simplexml_load_string($unZip);
-            if (!$loadedXml) {
-                return null;
-            }
-
-            return (new XML($loadedXml, []))->toArray();
-        }
-
-        return null;
-    }
-
-    /**
-     * @throws NotConnectedException
-     */
-    private function connect(): void
-    {
-        try {
-            $this->stompClient->connect();
-        } catch (StompException $exception) {
-            throw new NotConnectedException();
-        }
+        return $this->connection;
     }
 }

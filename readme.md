@@ -4,13 +4,12 @@ Simple connector to the National rail stomp queue. Will return the messages a de
 ## Example
 
 ```
-$nationalRailConsumer = new \NationalRail\Connector(
-    'your-username',
-    'your-password',
-    'your-queue-string'
+$connector = new \NationalRail\Connector(
+    'user',
+    'password',
+    'your-queue-name'
 );
+$connection = $connector->getConnection();
 
-while (true) {
-    var_dump($nationalRailConsumer->getMessage());
-}
+var_dump($connection->getMessage());
 ```
