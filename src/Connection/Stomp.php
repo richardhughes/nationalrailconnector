@@ -23,8 +23,7 @@ class Stomp
     public function __construct(
         Client $stompClient,
         StatefulStomp $statefulStomp
-    )
-    {
+    ) {
         $this->stompClient = $stompClient;
         $this->statefulStomp = $statefulStomp;
     }
@@ -67,5 +66,4 @@ class Stomp
     {
         $this->statefulStomp->subscribe('/queue/' . $queue);
     }
-
 }

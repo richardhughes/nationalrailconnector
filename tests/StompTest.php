@@ -5,7 +5,6 @@ namespace Tests;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryTestCase;
 use NationalRail\Connection\Stomp;
-use NationalRail\Connector;
 use NationalRail\Exception\NotConnectedException;
 use Stomp\Client;
 use Stomp\Exception\StompException;
@@ -28,7 +27,7 @@ class StompTest extends MockeryTestCase
      */
     private $stompConnection;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -38,7 +37,10 @@ class StompTest extends MockeryTestCase
         $this->stompConnection = new Stomp($this->stompClient, $this->statefulStomp);
     }
 
-    public function testConnectionDoesNotThrowExceptionIfConnected()
+    /**
+     * @throws NotConnectedException
+     */
+    public function testConnectionDoesNotThrowExceptionIfConnected(): void
     {
         $this->stompClient
             ->shouldReceive('connect')
@@ -48,7 +50,10 @@ class StompTest extends MockeryTestCase
         $this->stompConnection->connect();
     }
 
-    public function testConnectionThrowsNotConnectedExceptionIfFailed()
+    /**
+     * @throws NotConnectedException
+     */
+    public function testConnectionThrowsNotConnectedExceptionIfFailed(): void
     {
         $this->stompClient
             ->shouldReceive('connect')
@@ -60,7 +65,7 @@ class StompTest extends MockeryTestCase
         $this->stompConnection->connect();
     }
 
-    public function testLoginPassesTheCorrectValuesToTheStompClient()
+    public function testLoginPassesTheCorrectValuesToTheStompClient(): void
     {
         $username = "test";
         $password = "password";
@@ -74,7 +79,7 @@ class StompTest extends MockeryTestCase
         $this->stompConnection->login($username, $password);
     }
 
-    public function testCanSubscribeToQueue()
+    public function testCanSubscribeToQueue(): void
     {
         $queue = 'test-queue';
 

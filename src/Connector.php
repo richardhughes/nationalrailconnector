@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: richie
- * Date: 07/06/18
- * Time: 18:05
- */
 
 namespace NationalRail;
 
